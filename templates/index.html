@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block container %}
+  <!-- HERO -->
+  <section class="jumbotron text-center mt-4" style="background; background-color: #dde0ff; background-position: center center">
+    <h1 class="display-4">Всякие туры</h1>
+    <p class="lead">{{subtitle}}</p>
+    <p class="mt-5 w-50 mx-auto">{{description}}</p>
+  </section>
+  <!-- CARDS -->
+  <div class="row mt-5">
+    {% for num, hotel in tours.items() %}
+    <div class="col-4">
+      <div class="card mb-4">
+        <div class="embed-responsive embed-responsive-16by9">
+          <a href="/tours/{{num}}/"><img class="card-img-top embed-responsive-item" src={{hotel.picture}} border="0" alt="" /></a>
+        </div>
+        <div class="card-body">
+          <h2 class="h5 card-title">{{hotel.title}}</h2>
+          <p class="card-text">{{hotel.description|truncate(95)}}</p>
+          <a href="/tours/{{num}}/" class="btn btn-sm btn-primary">Подробнее</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}
